@@ -1,0 +1,90 @@
+:root {
+  --bg-page: #f4f4f4;
+  --bg-panel: #f0f0f0;
+  --border: #ccc;
+  --text: #222;
+  --item-bg: navy;
+  --item-text: white;
+  --item-font: 20px Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text);
+}
+
+h1,
+h2 {
+  margin-bottom: 12px;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background: var(--bg-panel);
+  padding: 15px;
+  border: 2px solid var(--border);
+  height: 150px;
+  margin-bottom: 24px;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+.item {
+  background: var(--item-bg);
+  color: var(--item-text);
+  font: var(--item-font);
+  width: 80px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.item--tall {
+  height: 80px;
+}
+
+.item--short {
+  height: 40px;
+}
+
+.item--medium {
+  height: 60px;
+}
+
+.stretch .item {
+  background: teal;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section pre {
+  background: #222;
+  color: #f8f8f8;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: 6px;
+}

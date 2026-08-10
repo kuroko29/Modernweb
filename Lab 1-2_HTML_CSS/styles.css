@@ -1,0 +1,28 @@
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+
+p {
+    color: green;
+    font-size: 20px;
+}
+
+.highlight {
+    background-color: yellow;
+    padding: 5px;
+}
+
+#main-header {
+    background: blue;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

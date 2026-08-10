@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Font Demo</title>
+
+<style>
+
+    body {
+    font-family: Serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;    /* em unit */
+    }
+
+    .block {
+        margin-bottom: 40px;
+    }
+
+    /* -----------------------
+       1) Sans-serif 
+       -----------------------*/
+    .sans {
+        font-family: Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 20px;
+        color: black;
+    }
+
+    /* -----------------------
+       2) Serif 
+       -----------------------*/
+    .serif {
+        font-family: Georgia, serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        color: black;
+    }
+
+    /* -----------------------
+       3) Serif Red
+       -----------------------*/
+    .serif-red {
+        font-family: Georgia, serif;
+        font-style: oblique;
+        font-weight: 600;
+        font-size: 22px;
+        color: red;
+    }
+
+
+</style>
+
+</head>
+<body>
+ความแตกต่างของฟอนต์แต่ละแบบ <br><br>
+
+<!-- 1) Sans-serif -->
+<div class="block">
+    <div class="sans">
+    Sans-serif<br>
+    (font-family: Arial; style: italic; weight: 400; size: 20px; color: black)<br>
+    </div>
+</div>
+
+<!-- 2) Serif -->
+<div class="block">
+    <div class="serif">
+    Serif<br>
+    (font-family: Georgia; style: normal; weight: 600; size: 22px; color: black)<br>
+    </div>
+</div>
+
+<!-- 3) Serif Red -->
+<div class="block">
+    <div class="serif-red">
+    Serif (Red)<br>
+    (font-family: Georgia; style: oblique; weight: 600; size: 22px; color: red)<br>
+    </div>
+</div>
+
+</body>
+</html>

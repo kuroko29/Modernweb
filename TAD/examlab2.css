@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eef2f7;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 500px;
+  margin: 100px auto;
+  padding: 28px 24px 32px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.container h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+}
+
+.container p {
+  margin: 0 0 22px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.field {
+  flex: 1;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #d5dbe5;
+  border-radius: 10px;
+  background-color: #f7f9fb;
+  font-size: 15px;
+  color: #0f172a;
+  margin-bottom: 18px;
+}
+
+select {
+  appearance: none;
+}
+
+select[name="day"],
+select[name="month"],
+select[name="year"] {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+}
+
+.dob-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+button {
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  border-radius: 18px;
+  background-color: #22c55e;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #16a34a;
+}
+
+.terms {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #7dd3fc;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}

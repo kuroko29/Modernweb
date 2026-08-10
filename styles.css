@@ -1,0 +1,322 @@
+/* styles.css */
+
+/* กำหนดสีหลักและตัวแปรที่ใช้ซ้ำในทั้งหน้า */
+:root {
+  color-scheme: light;
+  --primary: #8f25eb;
+  --primary-deep: #1d4ed8;
+  --accent: #f59e0b;
+  --background: #f3f7ff;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+}
+
+/* ทำให้ทุกองค์ประกอบคำนวณขนาดอย่างสอดคล้อง */
+* {
+  box-sizing: border-box;
+}
+
+/* พื้นหลังและรูปแบบข้อความของทั้งหน้า */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  color: var(--text);
+}
+
+/* ส่วนหัวข้อหลักด้านบนของหน้า ใช้แสดงชื่อเว็บและคำอธิบาย */
+.hero {
+  background: linear-gradient(135deg, #8f25eb, #3b82f6 45%, #60a5fa 100%);
+  color: #fff;
+  padding: 56px 20px 72px;
+}
+
+/* ทำให้เนื้อหาใน hero อยู่กึ่งกลางและกว้างพอเหมาะ */
+.hero-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ป้ายเล็กๆ ด้านบนหัวข้อ เพื่อให้ดูเป็นหมวดหรือแท็ก */
+.eyebrow {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+/* ขนาดและระยะห่างของหัวข้อหลักใน hero */
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+/* ขนาดหัวข้อรองใน hero ถ้าต้องการใช้เป็นหัวข้อย่อย */
+.hero h4 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: blueviolet;
+}
+
+/* ข้อความบรรยายใน hero เพื่อให้ผู้อ่านเข้าใจเนื้อหาของหน้า */
+.hero p {
+  margin: 10px 0 0;
+  max-width: 700px;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* จัดเรียงปุ่มหรือลิงก์ในส่วน hero ให้อยู่ในแถวเดียวกัน */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#run-all-button,
+.secondary-link,
+.view-code-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#run-all-button {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+}
+
+.secondary-link {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  text-decoration: none;
+}
+
+#run-all-button:hover,
+.secondary-link:hover,
+.view-code-button:hover {
+  transform: translateY(-2px);
+}
+
+/* กล่องเนื้อหาหลักของหน้า เพื่อให้เนื้อหาไม่กว้างเกินไป */
+.container {
+  max-width: 1040px;
+  margin: -28px auto 0;
+  padding: 0 20px 40px;
+}
+
+/* สไตล์พื้นฐานของกล่องข้อมูลและกลุ่มหมวดหมู่ */
+.intro-card,
+.category {
+  background: var(--surface);
+  border: 1px solid #e5ebf7;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+}
+
+/* กล่องแสดงข้อมูลนักศึกษา */
+.intro-card {
+  padding: 24px 28px;
+  margin-bottom: 22px;
+}
+
+/* หัวข้อของกล่องข้อมูลและหมวดหมู่ */
+.intro-card h2,
+.category h2 {
+  margin: 0 0 14px;
+  color: var(--primary-deep);
+}
+
+/* จัดเรียงข้อมูลในส่วนข้อมูลนักศึกษาเป็นคอลัมน์สองคอลัมน์ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* ระยะห่างระหว่างบรรทัดข้อมูลในกล่องข้อมูล */
+.info-grid p {
+  margin: 6px 0;
+}
+
+/* กล่องแต่ละหมวด เช่น week3, week4-5 ใช้แสดงรายการไฟล์ */
+.category {
+  margin-bottom: 22px;
+  padding: 0 0 8px;
+  overflow: hidden;
+}
+
+/* ส่วนหัวของหมวดที่มีชื่อหมวดและลิงก์เอกสารประกอบอยู่ในแถวเดียว */
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 24px;
+  background: linear-gradient(90deg, #eff6ff 0%, #f8fbff 100%);
+  border-bottom: 1px solid #e5ebf7;
+}
+
+.category-header h2 {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-bottom: none;
+}
+/* ช้องหมวดหมู่สัปดาห์ */
+.category-header_week {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  border-top: 1px solid #e5ebf7;
+  border-bottom: 1px solid #e5ebf7;
+}
+
+.category-header_week h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--primary-deep); 
+  text-decoration: underline; 
+}
+
+/* สไตล์ลิงก์สำหรับเปิดเอกสารประกอบ */
+.doc-link {
+  color: var(--primary-deep);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.doc-link:hover {
+  text-decoration: underline;
+}
+
+/* จัดรูปแบบรายการลิงก์ภายในแต่ละหมวด */
+.category ul {
+  list-style: none;
+  margin: 0;
+  padding: 14px 24px 20px;
+}
+
+/* จัดเรียงรายการไฟล์ในหมวดให้ดูเป็นแถวสั้นและลงตัว */
+.category li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* เอาเส้นขอบออกจากรายการสุดท้าย เพื่อให้ดูเรียบร้อย */
+.category li:last-child {
+  border-bottom: none;
+}
+
+/* ลิงก์ภายในหมวดให้ดูเด่นและกดได้ */
+.category a {
+  color: var(--primary-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* เมื่อวางเมาส์จะมีเส้นใต้ เพื่อให้รู้ว่าคลิกได้ */
+.category a:hover {
+  text-decoration: underline;
+}
+
+/* ปุ่มสำหรับดูโค้ดในอนาคต ถ้าต้องการใช้ต่อ */
+.view-code-button {
+  background: #eff6ff;
+  color: var(--primary-deep);
+  padding: 7px 12px;
+}
+
+/* กล่องป๊อปอัปสำหรับแสดงโค้ด หรือเนื้อหาเพิ่มเติม */
+.code-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(15, 23, 42, 0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.code-modal.visible {
+  display: flex;
+}
+
+/* กล่องเนื้อหาภายใน modal เพื่อให้แสดงผลในพื้นที่กว้างและเรียบง่าย */
+.modal-content {
+  width: min(100%, 960px);
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ส่วนหัวของ modal สำหรับชื่อเรื่องและปุ่มปิด */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--primary-deep);
+  color: #fff;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  margin: 0;
+  padding: 18px 20px;
+  background: #f8fafc;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ส่วนท้ายของหน้า สำหรับข้อความประกาศหรือคำอธิบายเพิ่มเติม */
+footer {
+  text-align: center;
+  padding: 8px 16px 36px;
+  color: var(--muted);
+}
+
+/* สำหรับหน้าจอมือถือ ให้จัด layout ให้เรียบง่ายขึ้น */
+@media (max-width: 700px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

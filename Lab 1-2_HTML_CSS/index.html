@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บไซต์แนะนำตัวเอง</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ส่วนหัวเว็บไซต์ -->
+    <header id="main-header">
+        <h1>นายเบนจามิน ไชยฤทธิ์</h1>
+    </header>
+
+    <nav>
+        <a href="#about">เกี่ยวกับฉัน</a> |
+        <a href="#hobby">งานอดิเรก</a> |
+        <a href="#contact">ติดต่อ</a>
+    </nav>
+
+    <main>
+
+        <section id="about">
+            <h2>เกี่ยวกับฉัน</h2>
+
+            <img src="image.jpg"
+                 alt="รูปภาพแนะนำตัว" width="200">
+
+            <p class="highlight">
+                สวัสดีครับ ผมชื่อ นายเบนจามิน ไชยฤทธิ์
+            </p>
+        </section>
+
+        <section id="hobby">
+            <h2>งานอดิเรก</h2>
+
+            <p>
+                งานอดิเรกของผมคือ เล่นเกม ฟังเพลง
+                และศึกษาการเขียนโปรแกรม
+            </p>
+
+            <ul>
+                <li>เล่นเกม</li>
+                <li>ฟังเพลง</li>
+                <li>เขียนโปรแกรม</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>ข้อมูลส่วนตัว</h2>
+
+            <table border="1">
+                <tr>
+                    <th colspan="2">ข้อมูล</th>
+                </tr>
+
+                <tr>
+                    <td>ชื่อ</td>
+                    <td>นายเบนจามิน ไชยฤทธิ์</td>
+                </tr>
+
+                <tr>
+                    <td>สาขา</td>
+                    <td>วิศวกรรมซอฟต์แวร์</td>
+                </tr>
+
+                <tr>
+                    <td>มหาวิทยาลัย</td>
+                    <td>มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา</td>
+                </tr>
+
+                <tr>
+                    <td>ชั้นปี</td>
+                    <td>1</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ส่วนข้อมูลติดต่อ -->
+        <section id="contact">
+            <h2>ติดต่อ</h2>
+
+            <form action="#" method="post">
+
+                <label>ชื่อ</label><br>
+                <input type="text" name="name"><br><br>
+
+                <label>อีเมล</label><br>
+                <input type="email" name="email"><br><br>
+
+                <label>ข้อความ</label><br>
+                <textarea name="message"></textarea><br><br>
+
+                <button type="submit">ส่งข้อมูล</button>
+
+            </form>
+                <p>
+                    Social Media :
+                    <a href="https://www.facebook.com/" target="_blank">
+                        Facebook
+                    </a>
+                </p>
+        </section>
+
+    </main>
+    <footer>
+        <p>นายเบนจามิน ไชยฤทธิ์</p>
+    </footer>
+</body>
+</html>
