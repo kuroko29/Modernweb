@@ -13,11 +13,7 @@
   </style>
 </head>
 <body>
-  <h1>ฝึกเขียน For Loop</h1>
-  <label for="maxNumber">ตัวเลขสูงสุด: </label>
-  <input id="maxNumber" type="number" min="0" max="20" value="20" oninput="limitMaxNumber(this)">
   <button type="button" onclick="runLoops()">Run Code</button>
-
   <div id="outputBox" aria-live="polite">กด Run Code เพื่อแสดงผล</div>
 
   <script>
@@ -32,7 +28,7 @@
     }
 
     function runLoops() {
-      const maxNumber = Number(document.getElementById("maxNumber").value);
+      const maxNumber = 20;
       const output = [];
 
       if (!Number.isInteger(maxNumber) || maxNumber < 0 || maxNumber > 20) {
