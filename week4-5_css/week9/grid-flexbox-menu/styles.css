@@ -1,0 +1,67 @@
+.menu-container {
+  display: grid; /* Grid Container (โครงสร้างหลัก) */
+  grid-template-columns: 200px 1fr; /* ซ้ายคงที่ 200px ขวายืด */
+  grid-template-rows: 50px; /* สูง 50px */
+  align-items: center; /* จัดแนวแกนแนวตั้งให้อยู่ตรงกลาง */
+  background-color: #222;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo {
+  text-align: center; /* จัดข้อความโลโก้ตรงกลาง */
+  font-size: 24px;
+  font-weight: bold;
+}
+
+ul {
+  display: flex; /* Menu ใช้ Flexbox */
+  list-style: none; /* ลบจุดหน้ารายการ */
+  align-items: center; /* จัดรายการแนวนอนให้อยู่กลางแถว */
+  gap: 20px; /* ช่องว่างระหว่างเมนู */
+  margin: 0;
+  padding: 0;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none; /* ลบเส้นใต้ลิงก์ */
+  font-size: 18px;
+}
+
+ul li a:hover {
+  text-decoration: underline; /* เพิ่มเส้นใต้เมื่อเลื่อนเมาส์ */
+}
+
+#showCssBtn {
+  margin: 20px 20px 0 20px;
+  padding: 10px 16px;
+  border: none;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#showCssBtn:hover {
+  background-color: #357ab8;
+}
+
+.code-block {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #111;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 10px 20px 20px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+#cssMessage {
+  color: #ffcc00;
+  margin: 10px 20px;
+}
+

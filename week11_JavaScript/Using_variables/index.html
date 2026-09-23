@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตัวอย่างตัวแปร JavaScript</title>
+</head>
+<body>
+  <main>
+    <h1>ตัวอย่างการใช้ตัวแปร JavaScript</h1>
+    <section class="card">
+      <p>กดปุ่มเพื่อทดสอบการเปลี่ยนค่า <code>let</code> และข้อผิดพลาดเมื่อพยายามเปลี่ยนค่า <code>const</code></p>
+      <button type="button" id="runButton">Run Code</button>
+      <pre id="outputBox" aria-live="polite">กด Run Code เพื่อดูผลลัพธ์</pre>
+    </section>
+  </main>
+
+  <script>
+    function runDemo() {
+      console.clear();
+      const output = [];
+
+      // สร้างตัวแปร
+      let studentName = "สมชาย";
+      let age = 20;
+      const universityName = "มหาวิทยาลัยเทคโนโลยี";
+
+      output.push("ชื่อ: " + studentName);
+      output.push("อายุ: " + age);
+      output.push("มหาวิทยาลัย: " + universityName);
+      console.log("ชื่อ:", studentName);
+      console.log("อายุ:", age);
+
+      // let สามารถเปลี่ยนค่าได้
+      age = 21;
+      output.push("อายุใหม่: " + age);
+      console.log("อายุใหม่:", age);
+
+      // const เปลี่ยนค่าไม่ได้ จึงใช้ try...catch ดักข้อผิดพลาด
+      try {
+        universityName = "มหาวิทยาลัยใหม่";
+      } catch (error) {
+        output.push("Error: " + error.message);
+        console.error(error.message);
+      }
+
+      document.getElementById("outputBox").textContent = output.join("\n");
+    }
+
+    document.getElementById("runButton").addEventListener("click", runDemo);
+  </script>
+</body>
+</html>

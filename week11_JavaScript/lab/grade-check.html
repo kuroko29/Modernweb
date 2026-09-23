@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตรวจสอบเกรด</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 620px; margin: 48px auto; padding: 0 20px; }
+    label, input, button { font-size: 1rem; }
+    input { width: 80px; padding: 7px; }
+    button { padding: 8px 14px; margin: 5px 3px; cursor: pointer; }
+    #output { margin-top: 18px; padding: 16px; border-radius: 8px; background: #111; color: #fff; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <input id="score" type="number" min="0" max="100" >
+  <button type="button" onclick="runGradeCheck()">Run Code</button>
+
+  <div id="output" aria-live="polite">กด Run Code เพื่อดูผลลัพธ์</div>
+
+  <script>
+    function runGradeCheck() {
+      const score = Number(document.getElementById("score").value);
+      let grade;
+      let result;
+
+      if (!Number.isFinite(score) || score < 0 || score > 100) {
+        const errorMessage = "กรุณากรอกคะแนนตั้งแต่ 0 ถึง 100";
+        document.getElementById("output").textContent = errorMessage;
+        console.log(errorMessage);
+        return;
+      }
+
+      if (score >= 80) {
+        grade = "A";
+      } else if (score >= 70) {
+        grade = "B";
+      } else if (score >= 60) {
+        grade = "C";
+      } else if (score >= 50) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+
+      if (score >= 50) {
+        result = "ผ่าน";
+      } else {
+        result = "ไม่ผ่าน";
+      }
+      const message = `คะแนนที่ส่งได้: ${score}\nเกรด: ${grade}\nผลสอบ: ${result}`;
+
+      document.getElementById("output").textContent = message;
+      console.log(message);
+    }
+
+    function setScore(value) {
+      document.getElementById("score").value = value;
+      runGradeCheck();
+    }
+  </script>
+</body>
+</html>

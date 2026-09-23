@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ฝึกเขียน For Loop</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 620px; margin: 48px auto; padding: 0 20px; }
+    input, button { font-size: 1rem; padding: 8px; }
+    input { width: 70px; }
+    button { cursor: pointer; }
+    #outputBox { margin-top: 18px; padding: 16px; border-radius: 8px; background: #000000; color: #fff; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h1>ฝึกเขียน For Loop</h1>
+  <label for="maxNumber">ตัวเลขสูงสุด: </label>
+  <input id="maxNumber" type="number" min="0" max="20" value="20" oninput="limitMaxNumber(this)">
+  <button type="button" onclick="runLoops()">Run Code</button>
+
+  <div id="outputBox" aria-live="polite">กด Run Code เพื่อแสดงผล</div>
+
+  <script>
+    function limitMaxNumber(input) {
+      const value = Number(input.value);
+
+      if (input.value !== "" && value > 20) {
+        input.value = 20;
+      } else if (input.value !== "" && value < 0) {
+        input.value = 0;
+      }
+    }
+
+    function runLoops() {
+      const maxNumber = Number(document.getElementById("maxNumber").value);
+      const output = [];
+
+      if (!Number.isInteger(maxNumber) || maxNumber < 0 || maxNumber > 20) {
+        const errorMessage = "กรุณากรอกจำนวนเต็มตั้งแต่ 0 ถึง 20";
+        document.getElementById("outputBox").textContent = errorMessage;
+        console.log(errorMessage);
+        return;
+      }
+
+      for (let i = 0; i <= maxNumber; i++) {
+        if (i % 2 === 0) {
+          output.push(`${i} (คู่)`);
+        } else {
+          output.push(`${i} (คี่)`);
+        }
+      }
+
+      for (let i = 0; i <= maxNumber; i += 2) {
+        output.push(`นับทีละ 2: ${i}`);
+      }
+
+      for (let i = maxNumber; i >= 0; i--) {
+        output.push(`ถอยหลัง: ${i}`);
+      }
+
+      const message = output.join("\n");
+      document.getElementById("outputBox").textContent = message;
+      console.log(message);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div id="outputBox">ผลลัพธ์จะปรากฏที่นี่...</div>
+    <button onclick="runDemo()">Run Code</button>
+
+    <script>
+    function runDemo() {
+        const output = [];
+
+        // ค่าเริ่มต้น
+        let score = 72;
+
+        // เงื่อนไข if / else
+        if (score >= 50) {
+        output.push("ผลสอบ: ผ่าน");
+        console.log("ผลสอบ: ผ่าน");
+        } else {
+        output.push("ผลสอบ: ไม่ผ่าน");
+        console.log("ผลสอบ: ไม่ผ่าน");
+        }
+
+        // วน loop 5 รอบ
+        for (let i = 0; i < 5; i++) {
+        output.push("รอบที่: " + i);
+        console.log("รอบที่:", i);
+        }
+
+        // อัปเดตผลลัพธ์บนหน้าเว็บ
+        document.getElementById("outputBox").textContent = output.join("\n");
+    }
+    </script>
+</body>
+</html>

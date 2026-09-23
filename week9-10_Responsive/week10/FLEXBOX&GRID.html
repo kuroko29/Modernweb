@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*กล่องแม่(Flex Container) */
+        .flex-container {
+            display: flex;
+            flex-direction: column; /*มือถือ: เรียงเเนวตั้ง*/
+            gap: 15px;
+            background-color: #e9edf0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /*กล่องลูก(Flex Item) */
+        .item {
+            background: #0f2557;
+            color: #ffffff;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        /*แท็บเล็ดขึ้นไป*/
+        @media (min-width: 768px) {
+            .flex-container {
+                flex-direction: row; /*เรียงเเนวนอน*/
+                flex-wrap: wrap; /*อนุญาตให้ขึ้นบรรทัดใหม่*/
+            }
+            .item {
+                flex: 1 1 45%; /*2 กล่องต่อแถว*/
+            }
+        }
+        /*เดสก์ท็อปขึ้นไป*/
+        @media (min-width: 1024px) {
+            .flex-container {
+                flex-wrap: nowrap; /*ไม่อนุญาตให้ขึ้นบรรทัดใหม่*/
+            }
+            .item {
+                flex: 1; /* แบ่งพื้นที่เท่ากัน */
+            }
+        }
+        
+        /*grid Container*/
+        /*มือถือ*/
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr; /*มือถือ: 1 คอลัมน์*/
+            gap: 15px;
+            background-color: #e9edf0;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        /*กล่องเนื้อหา*/
+        .item {
+            background: #0f2557;
+            color: #ffffff;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+        /*แท็บเล็ดขึ้นไป*/
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /*แท็บเล็ต: 2 คอลัมน์*/
+            }
+        }
+        /*เดสก์ท็อปขึ้นไป*/
+        @media (min-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr); /*เดสก์ท็อป: 4 คอลัมน์*/
+                max-width: 1200px;
+                margin: 0 auto; /*จัดกึ่งกลาง*/
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Flexbox Responsive</h1>
+    <div class="flex-container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+    </div>
+    <h1>Grid Responsive</h1>
+    <div class="grid-container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+</body>
+</html>

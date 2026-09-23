@@ -1,0 +1,63 @@
+:root {
+  /* กำหนดค่าความสูงของ header และ footer */
+  --header-footer-height: 70px;
+  /* กำหนดความกว้างของ sidebar */
+  --sidebar-width: 20%;
+}
+
+* {
+  box-sizing: border-box; /* รวม padding และ border ไว้ในขนาดกล่อง */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: #f0f7f7;
+}
+
+.grid-container {
+  display: grid; /* เปิดใช้งาน CSS Grid */
+  grid-template-columns: var(--sidebar-width) 80%; /* สร้าง 2 คอลัมน์ */
+  grid-template-rows: var(--header-footer-height) 530px var(--header-footer-height); /* สร้าง 3 แถว */
+  grid-template-areas:
+    "header header" /* header ครอบคลุมทั้งสองคอลัมน์ */
+    "aside main" /* aside อยู่ซ้าย main อยู่ขวา */
+    "footer footer"; /* footer ครอบคลุมทั้งสองคอลัมน์ */
+  gap: 10px; /* ช่องว่างระหว่างกริด */
+  padding: 10px;
+  min-height: 100vh;
+}
+
+header,
+aside,
+main,
+footer {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  grid-area: header; /* ใช้พื้นที่ชื่อ header */
+  background-color: rgb(52, 129, 0);
+}
+
+aside {
+  grid-area: aside; /* ใช้พื้นที่ชื่อ aside */
+  background-color: rgb(0, 82, 129);
+}
+
+main {
+  grid-area: main; /* ใช้พื้นที่ชื่อ main */
+  background-color: rgb(129, 0, 129);
+}
+
+footer {
+  grid-area: footer; /* ใช้พื้นที่ชื่อ footer */
+  background-color: rgb(0, 129, 86);
+}

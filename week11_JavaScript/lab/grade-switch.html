@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>การตรวจสอบเกรด (Switch Statement)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 620px; margin: 48px auto; padding: 0 20px; }
+    button { padding: 9px 16px; font-size: 1rem; cursor: pointer; }
+    #outputBox { margin-top: 18px; padding: 16px; border-radius: 8px; background: #111; color: #fff; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <button type="button" onclick="runGradeCheck()">Run Code</button>
+  <div id="outputBox" aria-live="polite">กด Run Code เพื่อสุ่มคะแนนและดูผลลัพธ์</div>
+
+  <script>
+    function runGradeCheck() {
+      const score = Math.floor(Math.random() * 101);
+      let grade;
+      let result;
+      let description;
+
+      if (score >= 80) {
+        grade = "A";
+      } else if (score >= 70) {
+        grade = "B";
+      } else if (score >= 60) {
+        grade = "C";
+      } else if (score >= 50) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+
+      if (score >= 50) {
+        result = "ผ่าน";
+      } else {
+        result = "ไม่ผ่าน";
+      }
+
+      switch (grade) {
+        case "A":
+          description = "ยอดเยี่ยมมาก";
+          break;
+        case "B":
+          description = "ดีมาก รักษามาตรฐานไว้";
+          break;
+        case "C":
+          description = "ผ่านเกณฑ์ระดับดี";
+          break;
+        case "D":
+          description = "พอใช้ แต่ควรพัฒนาเพิ่ม";
+          break;
+        case "F":
+          description = "ต้องลงทะเบียนเรียนใหม่";
+          break;
+        default:
+          description = "ไม่พบคำอธิบายเกรด";
+      }
+
+      const message = `คะแนนที่สุ่มได้: ${score}\nเกรด: ${grade}\nผลสอบ: ${result}\nคำอธิบาย: ${description}`;
+      document.getElementById("outputBox").textContent = message;
+      console.log(message);
+    }
+  </script>
+</body>
+</html>
