@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>REST API Demo (Simple)</title>
+</head>
+<body>
+  <h1>REST API Demo (Simple)</h1>
+
+  <button id="btnGet">GET /users</button>
+  <button id="btnPost">POST /posts</button>
+  <button id="btnPut">PUT /posts/1</button>
+  <button id="btnDelete">DELETE /posts/1</button>
+
+  <pre id="out">กดปุ่มเพื่อทดสอบ REST API...</pre>
+
+  <script>
+    const out = document.getElementById("out");
+    // ===== GET: ดึงรายการผู้ใช้ =====
+    document.getElementById("btnGet").addEventListener("click", async () => {
+      try {
+        // ส่งคำขอแบบ GET ไปยัง REST API
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        // แปลง JSON -> Array of Objects
+        const users = await res.json();
+        // แสดงผลแบบสั้น: รายชื่อผู้ใช้
+        out.textContent = users.map(u => `- ${u.name}`).join("\n");
+      } catch (err) {
+        out.textContent = "GET ล้มเหลว: " + err.message;
+      }
+    });
+
+    // ===== POST: สร้างข้อมูลใหม่ =====
+    document.getElementById("btnPost").addEventListener("click", async () => {
+      try {
+        const newPost = { title: "Hello REST", body: "This is a POST demo", userId: 1 };
+        // ส่งคำขอแบบ POST (มี body เป็น JSON)
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newPost)
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const created = await res.json();
+        out.textContent = "POST สำเร็จ (ตัวอย่าง response):\n" + JSON.stringify(created, null, 2);
+      } catch (err) {
+        out.textContent = "POST ล้มเหลว: " + err.message;
+      }
+    });
+
+    // ===== PUT: แก้ไขข้อมูลเดิม =====
+    document.getElementById("btnPut").addEventListener("click", async () => {
+      try {
+        const updatedPost = { id: 1, title: "Updated Title", body: "Updated Body", userId: 1 };
+        // ส่งคำขอแบบ PUT เพื่ออัปเดต resource /posts/1
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedPost)
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const updated = await res.json();
+        out.textContent = "PUT สำเร็จ (ตัวอย่าง response):\n" + JSON.stringify(updated, null, 2);
+      } catch (err) {
+        out.textContent = "PUT ล้มเหลว: " + err.message;
+      }
+    });
+
+    // ===== DELETE: ลบข้อมูล =====
+    document.getElementById("btnDelete").addEventListener("click", async () => {
+      try {
+        // ส่งคำขอแบบ DELETE ไปยัง /posts/1
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+          method: "DELETE"
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+
+        // JSONPlaceholder มักตอบกลับเป็น {} หรือว่าง แต่ถือว่าลบสำเร็จ
+        out.textContent = "DELETE สำเร็จ: ลบ /posts/1 แล้ว (เดโม)";
+      } catch (err) {
+        out.textContent = "DELETE ล้มเหลว: " + err.message;
+      }
+    });
+  </script>
+  
+</body>
+</html>

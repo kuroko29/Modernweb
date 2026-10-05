@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Form Events Demo</title>
+<style>
+    body {
+        background: #f6f7f8;
+        font-family: Tahoma;
+        padding: 40px;
+        color: rgb(4, 82, 170);
+    }
+
+    .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        width: 400px;
+        margin-top: 30px;
+        color: black;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    input {
+        width: 300px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 2px solid #ccc;
+        outline: none;
+        font-size: 16px;
+    }
+
+</style>
+</head>
+<body>
+
+<h1>Form Events - การทำงานกับฟอร์ม</h1>
+<p>ลองคลิกเข้าและออกจากช่อง Input เพื่อดูผลลัพธ์:</p>
+
+<div class="container">
+    <input type="text" id="username" placeholder="Username (ต้องมี 3+ ตัวอักษร)">
+</div>
+
+<script>
+let username = document.getElementById('username');
+
+// เมื่อ focus ที่ input
+username.addEventListener('focus', function() {
+    this.style.backgroundColor = '#e3f2fd';
+});
+
+// เมื่อออกจากช่อง (blur)
+username.addEventListener('blur', function() {
+    this.style.backgroundColor = '';
+    
+    // Validation
+    if (this.value.length < 3) {
+        this.style.borderColor = 'red';
+    } else {
+        this.style.borderColor = 'green';
+    }
+});
+</script>
+
+</body>
+</html>

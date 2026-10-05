@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>Event Bubbling & Capturing Demo</title>
+
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f3f4f6;
+    padding: 30px;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
+  .box {
+    padding: 30px;
+    border-radius: 8px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #A { background: #fde68a; }
+  #B { background: #fca5a5; }
+  #C { background: #93c5fd; }
+
+  #logBox {
+    background: #1f2937;
+    color: #d1d5db;
+    padding: 12px;
+    margin-top: 20px;
+    height: 200px;
+    overflow-y: auto;
+    font-family: Consolas, monospace;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Event Bubbling & Capturing Demo</h1>
+
+<p><strong>คลิกที่กล่อง C</strong> เพื่อดูลำดับ Event (Capturing → Bubbling)</p>
+
+<div id="A" class="box">
+  A
+  <div id="B" class="box">
+    B
+    <div id="C" class="box">
+      C (คลิกที่นี่)
+    </div>
+  </div>
+</div>
+
+<h3>Console Log:</h3>
+<div id="logBox"></div>
+
+<script>
+  // ฟังก์ชันใช้แสดงข้อความลงกล่อง log
+  function log(message) {
+    const logBox = document.getElementById("logBox");
+    const div = document.createElement("div");
+    div.textContent = message;
+    logBox.appendChild(div);
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  // รายชื่อ Element 3 ตัว
+  const boxes = ["A", "B", "C"];
+
+  // -------- Capturing Phase Events --------
+  boxes.forEach(id => {
+    document.getElementById(id).addEventListener(
+      "click",
+      () => log(`Capturing → ${id}`),
+      true // เปิด Capturing Phase
+    );
+  });
+
+  // -------- Bubbling Phase Events --------
+  boxes.forEach(id => {
+    document.getElementById(id).addEventListener(
+      "click",
+      () => log(`Bubbling → ${id}`)
+      // ไม่ใส่ true = Default = Bubbling Phase
+    );
+  });
+</script>
+
+</body>
+</html>

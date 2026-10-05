@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom Event – Shopping Cart (Simple & Clean)</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    #cart {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 260px;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    #cart strong {
+      font-size: 18px;
+    }
+
+    #item-count {
+      font-size: 24px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .btn-area {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      margin: 6px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn-iphone {
+      background: #007bff;
+      color: white;
+    }
+    .btn-iphone:hover {
+      background: #0066d6;
+    }
+
+    .btn-mac {
+      background: #28a745;
+      color: white;
+    }
+    .btn-mac:hover {
+      background: #1e8f3a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Custom Events – ตัวอย่าง Shopping Cart</h1>
+
+  <!-- กล่องแสดงจำนวนสินค้าในตะกร้า -->
+  <div id="cart">
+    <strong>My Cart</strong>
+    <p>จำนวนสินค้า: <span id="item-count">0</span></p>
+  </div>
+
+  <div class="btn-area">
+    <button id="add-iphone" class="btn-iphone">เพิ่ม iPhone</button>
+    <button id="add-macbook" class="btn-mac">เพิ่ม MacBook</button>
+  </div>
+
+  <script>
+    // ---- ShoppingCart class ----
+    class ShoppingCart {
+      constructor(element) {
+        this.element = element;
+        this.items = [];
+      }
+
+      addItem(product) {
+        this.items.push(product);
+
+        const event = new CustomEvent('itemAdded', {
+          detail: {
+            product: product,
+            total: this.items.length
+          }
+        });
+
+        this.element.dispatchEvent(event);
+      }
+    }
+
+    // ---- เริ่มใช้งาน ----
+    const cartElement = document.getElementById('cart');
+    const countElement = document.getElementById('item-count');
+
+    const cart = new ShoppingCart(cartElement);
+
+    // ฟัง Custom Event
+    cartElement.addEventListener('itemAdded', (e) => {
+      countElement.textContent = e.detail.total;
+      console.log("เพิ่มสินค้า:", e.detail.product, "รวม:", e.detail.total);
+    });
+
+    document.getElementById('add-iphone').addEventListener('click', () => {
+      cart.addItem('iPhone');
+    });
+
+    document.getElementById('add-macbook').addEventListener('click', () => {
+      cart.addItem('MacBook');
+    });
+  </script>
+</body>
+</html>

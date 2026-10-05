@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather API Demo - ดอยสะเก็ด</title>
+</head>
+<body>
+
+<h1>ตัวอย่าง Weather API</h1>
+<h3>อำเภอดอยสะเก็ด จังหวัดเชียงใหม่</h3>
+
+<button id="loadWeather">โหลดข้อมูลสภาพอากาศ</button>
+
+<pre id="result">กดปุ่มเพื่อโหลดข้อมูล...</pre>
+
+<script>
+
+// ดึง element จากหน้าเว็บ
+const button = document.getElementById("loadWeather");
+const result = document.getElementById("result");
+
+// เมื่อกดปุ่มให้เรียก API
+button.addEventListener("click", async () => {
+
+  // URL ของ Weather API (Open-Meteo) https://open-meteo.com/
+  // latitude และ longitude ของอำเภอดอยสะเก็ด
+  const url =
+  "https://api.open-meteo.com/v1/forecast" +
+  "?latitude=18.878&longitude=99.136" +
+  "&current=temperature_2m,relative_humidity_2m,wind_speed_10m";
+
+  try {
+
+    // ส่ง request ไปยัง API
+    const response = await fetch(url);
+   
+
+    // ตรวจสอบว่าการเชื่อมต่อสำเร็จหรือไม่
+    if(!response.ok){
+      throw new Error("ไม่สามารถเชื่อมต่อ API ได้");
+    }
+
+    // แปลงข้อมูล JSON ที่ได้จาก server ให้เป็น JavaScript Object
+    const data = await response.json();
+
+    // ดึงข้อมูลสภาพอากาศปัจจุบันจาก JSON
+    const weather = data.current;
+
+    // แสดงผลข้อมูลบนหน้าเว็บ
+    result.textContent =
+      "สถานที่ : อำเภอดอยสะเก็ด จังหวัดเชียงใหม่\n" +
+      "อุณหภูมิ : " + weather.temperature_2m + " °C\n" +
+      "ความชื้น : " + weather.relative_humidity_2m + " %\n" +
+      "ความเร็วลม : " + weather.wind_speed_10m + " km/h\n" +
+      "เวลา : " + weather.time;
+
+
+    // แสดงโครงสร้าง JSON ใน Console
+    console.log(data);
+
+  } catch(error){
+
+    // หากเกิดข้อผิดพลาดให้แสดงข้อความ
+    result.textContent = "เกิดข้อผิดพลาด : " + error.message;
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
